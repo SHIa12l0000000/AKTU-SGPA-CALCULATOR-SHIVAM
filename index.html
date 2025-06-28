@@ -3,52 +3,83 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AKTU SGPA Calculator</title>
+  <title>AKTU SGPA Calculator - Shivam</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    body { font-family: Arial; background: #f5f5f5; margin: 20px; position: relative; }
-    .container { max-width: 700px; margin: auto; background: #fff; padding: 20px; border-radius: 8px; }
-    input[type=number] { width: 80px; }
-    table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
-    th, td { padding: 8px; text-align: left; }
-    th { background: #eee; }
-    button { padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; }
-    button:hover { background: #0056b3; }
-    .result { margin-top: 20px; font-weight: bold; }
-    .top-left { position: absolute; top: 5px; left: 10px; font-size: 12px; color: gray; }
-    .title { text-align: center; font-weight: bold; font-size: 20px; margin-bottom: 10px; }
-    .footer { text-align: center; font-size: 14px; margin-top: 30px; color: gray; }
+    body {
+      background-color: #f8f9fa;
+      padding: 20px;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    .top-left {
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      font-size: 13px;
+      color: gray;
+    }
+    .title {
+      text-align: center;
+      font-weight: bold;
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+    .footer {
+      text-align: center;
+      font-size: 14px;
+      margin-top: 30px;
+      color: #666;
+    }
   </style>
 </head>
 <body>
-  <div class="top-left">created by ai + shivam (it)</div>
-  <div class="container">
-    <div class="title">1st Year BTech Result Calculator</div>
-    <form id="marksForm">
-      <h3>Theory (Ext Max: 70, Int Max: 30)</h3>
-      <table>
-        <tr><th>Subject</th><th>Ext</th><th>Int</th></tr>
-        <tr><td>Chemistry</td><td><input type="number" id="chemExt"></td><td><input type="number" id="chemInt"></td></tr>
-        <tr><td>Mathematics</td><td><input type="number" id="mathExt"></td><td><input type="number" id="mathInt"></td></tr>
-        <tr><td>Environment</td><td><input type="number" id="envExt"></td><td><input type="number" id="envInt"></td></tr>
-        <tr><td>Programming</td><td><input type="number" id="progExt"></td><td><input type="number" id="progInt"></td></tr>
-        <tr><td>Electrical</td><td><input type="number" id="elecExt"></td><td><input type="number" id="elecInt"></td></tr>
-      </table>
 
-      <h3>Labs (Int & Ext Max: 50)</h3>
-      <table>
-        <tr><th>Lab</th><th>Int</th><th>Ext</th></tr>
-        <tr><td>Chemistry Lab</td><td><input type="number" id="chemLabInt"></td><td><input type="number" id="chemLabExt"></td></tr>
-        <tr><td>Electrical Lab</td><td><input type="number" id="elecLabInt"></td><td><input type="number" id="elecLabExt"></td></tr>
-        <tr><td>Programming Lab</td><td><input type="number" id="progLabInt"></td><td><input type="number" id="progLabExt"></td></tr>
-        <tr><td>Graphics Lab</td><td><input type="number" id="graphicsInt"></td><td><input type="number" id="graphicsExt"></td></tr>
-      </table>
+<div class="top-left">created by ai + shivam (it)</div>
 
-      <button type="button" onclick="calculate()">Calculate</button>
-    </form>
+<div class="container">
+  <div class="title">1st Year BTech Result Calculator</div>
 
-    <div id="results" class="result"></div>
-    <div class="footer">RKGIT BTECH RESULT</div>
-  </div>
+  <form id="marksForm">
+    <h5>Theory Subjects (Ext Max: 70, Int Max: 30)</h5>
+    <div class="row g-2 mb-3">
+      <div class="col-md-4"><label>Chemistry Ext</label><input type="number" id="chemExt" class="form-control"></div>
+      <div class="col-md-4"><label>Chemistry Int</label><input type="number" id="chemInt" class="form-control"></div>
+      <div class="col-md-4"><label>Math Ext</label><input type="number" id="mathExt" class="form-control"></div>
+      <div class="col-md-4"><label>Math Int</label><input type="number" id="mathInt" class="form-control"></div>
+      <div class="col-md-4"><label>Env Ext</label><input type="number" id="envExt" class="form-control"></div>
+      <div class="col-md-4"><label>Env Int</label><input type="number" id="envInt" class="form-control"></div>
+      <div class="col-md-4"><label>Prog Ext</label><input type="number" id="progExt" class="form-control"></div>
+      <div class="col-md-4"><label>Prog Int</label><input type="number" id="progInt" class="form-control"></div>
+      <div class="col-md-4"><label>Elec Ext</label><input type="number" id="elecExt" class="form-control"></div>
+      <div class="col-md-4"><label>Elec Int</label><input type="number" id="elecInt" class="form-control"></div>
+    </div>
+
+    <h5>Labs (Int & Ext Max: 50)</h5>
+    <div class="row g-2 mb-3">
+      <div class="col-md-4"><label>Chem Lab Int</label><input type="number" id="chemLabInt" class="form-control"></div>
+      <div class="col-md-4"><label>Chem Lab Ext</label><input type="number" id="chemLabExt" class="form-control"></div>
+      <div class="col-md-4"><label>Elec Lab Int</label><input type="number" id="elecLabInt" class="form-control"></div>
+      <div class="col-md-4"><label>Elec Lab Ext</label><input type="number" id="elecLabExt" class="form-control"></div>
+      <div class="col-md-4"><label>Prog Lab Int</label><input type="number" id="progLabInt" class="form-control"></div>
+      <div class="col-md-4"><label>Prog Lab Ext</label><input type="number" id="progLabExt" class="form-control"></div>
+      <div class="col-md-4"><label>Graphics Int</label><input type="number" id="graphicsInt" class="form-control"></div>
+      <div class="col-md-4"><label>Graphics Ext</label><input type="number" id="graphicsExt" class="form-control"></div>
+    </div>
+
+    <div class="d-grid gap-2">
+      <button type="button" onclick="calculate()" class="btn btn-primary">Calculate</button>
+    </div>
+  </form>
+
+  <div id="results" class="result mt-4"></div>
+
+  <div class="footer">RKGIT BTECH RESULT</div>
+</div>
 
 <script>
 function getGradePoint(mark) {
@@ -76,11 +107,10 @@ function calculate() {
 
   const results = document.getElementById("results");
   for (let id in limits) {
-    const input = document.getElementById(id);
-    const value = Number(input.value);
-    if (value > limits[id]) {
+    const val = +document.getElementById(id).value;
+    if (val > limits[id]) {
       results.innerHTML = `
-        <div style="color:red; font-size: 16px; line-height: 1.6;">
+        <div class="alert alert-danger text-center">
           ABHI BACCHE KI JAAN LEGA KYA 😭<br>
           CHAL BETE AUKAT ME RE KE NUMBER INPUT KAR<br>
           (ITNA KABHI JIVAN MAI BHI NUMBER DEKHA HAI?<br>
@@ -91,7 +121,6 @@ function calculate() {
     }
   }
 
-  // If all inputs valid, calculate results
   const theory = [
     {marks: +chemExt.value + +chemInt.value, credit: 4},
     {marks: +mathExt.value + +mathInt.value, credit: 4},
@@ -119,12 +148,15 @@ function calculate() {
   const percent = (totalMarks / 900 * 100).toFixed(2);
 
   results.innerHTML = `
-    Total Marks: <b>${totalMarks} / 900</b><br>
-    Percentage: <b>${percent}%</b><br>
-    SGPA: <b>${sgpa}</b><br>
-    Credits Earned: <b>${totalCredits}</b>
+    <div class="alert alert-success">
+      <strong>Total Marks:</strong> ${totalMarks} / 900<br>
+      <strong>Percentage:</strong> ${percent}%<br>
+      <strong>SGPA:</strong> ${sgpa}<br>
+      <strong>Credits Earned:</strong> ${totalCredits}
+    </div>
   `;
 }
 </script>
+
 </body>
 </html>
