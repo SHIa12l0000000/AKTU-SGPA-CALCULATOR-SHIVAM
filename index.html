@@ -136,7 +136,13 @@
         weighted += gp * s.credit;
       });
 
-      if (totalMarks > 900) {
+     let maxTotal = 0;
+all.forEach(s => maxTotal += 100); // assume max 100 per subject
+if (totalMarks > maxTotal) {
+  results.innerHTML = `...your funny message...`;
+  return;
+}
+ {
         results.innerHTML = `
           <div style="color:red; font-size: 16px; line-height: 1.6;">
             ABHI BACCHE KI JAAN LEGA KYA 😭<br>
