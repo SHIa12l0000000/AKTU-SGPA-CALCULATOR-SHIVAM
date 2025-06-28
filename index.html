@@ -7,156 +7,184 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     body {
-      background-color: #f8f9fa;
+      background: #e2e8f0;
       padding: 20px;
+      font-family: "Segoe UI", sans-serif;
     }
     .container {
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      max-width: 800px;
+      margin: auto;
+    }
+    .card {
+      margin-top: 20px;
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    .card-header {
+      background: linear-gradient(90deg, #4a90e2, #357ab8);
+      color: white;
+      font-size: 24px;
+      text-align: center;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+      padding: 15px;
+    }
+    .form-control {
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    .btn-calc {
+      background: linear-gradient(90deg, #4a90e2, #357ab8);
+      border: none;
+      border-radius: 6px;
+      color: white;
+      font-size: 18px;
+      padding: 12px;
+      width: 100%;
+      transition: background 0.3s;
+    }
+    .btn-calc:hover {
+      background: linear-gradient(90deg, #357ab8, #2b5a8a);
+    }
+    .result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    .alert {
+      border-radius: 6px;
+      font-size: 16px;
     }
     .top-left {
-      position: absolute;
-      top: 10px;
-      left: 20px;
+      position: fixed;
+      top: 15px;
+      left: 15px;
       font-size: 13px;
-      color: gray;
-    }
-    .title {
-      text-align: center;
-      font-weight: bold;
-      font-size: 22px;
-      margin-bottom: 20px;
+      color: #555;
     }
     .footer {
       text-align: center;
-      font-size: 14px;
+      color: #555;
       margin-top: 30px;
-      color: #666;
+      font-size: 14px;
     }
   </style>
 </head>
 <body>
 
-<div class="top-left">created by ai + shivam (it)</div>
+  <div class="top-left">created by ai + shivam (it)</div>
 
-<div class="container">
-  <div class="title">1st Year BTech Result Calculator</div>
+  <div class="container">
+    <div class="card">
+      <div class="card-header">1st Year BTech Result Calculator</div>
+      <div class="card-body">
 
-  <form id="marksForm">
-    <h5>Theory Subjects (Ext Max: 70, Int Max: 30)</h5>
-    <div class="row g-2 mb-3">
-      <div class="col-md-4"><label>Chemistry Ext</label><input type="number" id="chemExt" class="form-control"></div>
-      <div class="col-md-4"><label>Chemistry Int</label><input type="number" id="chemInt" class="form-control"></div>
-      <div class="col-md-4"><label>Math Ext</label><input type="number" id="mathExt" class="form-control"></div>
-      <div class="col-md-4"><label>Math Int</label><input type="number" id="mathInt" class="form-control"></div>
-      <div class="col-md-4"><label>Env Ext</label><input type="number" id="envExt" class="form-control"></div>
-      <div class="col-md-4"><label>Env Int</label><input type="number" id="envInt" class="form-control"></div>
-      <div class="col-md-4"><label>Prog Ext</label><input type="number" id="progExt" class="form-control"></div>
-      <div class="col-md-4"><label>Prog Int</label><input type="number" id="progInt" class="form-control"></div>
-      <div class="col-md-4"><label>Elec Ext</label><input type="number" id="elecExt" class="form-control"></div>
-      <div class="col-md-4"><label>Elec Int</label><input type="number" id="elecInt" class="form-control"></div>
+        <form id="marksForm">
+          <h6 class="text-secondary">Theory (Ext ≤70, Int ≤30)</h6>
+          <div class="row g-3 mb-4">
+            <div class="col-md-4"><input class="form-control" type="number" id="chemExt" placeholder="Chem Ext"></div>
+            <div class="col-md-4"><input class="form-control" type="number" id="chemInt" placeholder="Chem Int"></div>
+            <div class="col-md-4"><input class="form-control" type="number" id="mathExt" placeholder="Math Ext"></div>
+            <div class="col-md-4"><input class="form-control" type="number" id="mathInt" placeholder="Math Int"></div>
+            <div class="col-md-4"><input class="form-control" type="number" id="envExt" placeholder="Env Ext"></div>
+            <div class="col-md-4"><input class="form-control" type="number" id="envInt" placeholder="Env Int"></div>
+            <div class="col-md-4"><input class="form-control" type="number" id="progExt" placeholder="Prog Ext"></div>
+            <div class="col-md-4"><input class="form-control" type="number" id="progInt" placeholder="Prog Int"></div>
+            <div class="col-md-4"><input class="form-control" type="number" id="elecExt" placeholder="Elec Ext"></div>
+            <div class="col-md-4"><input class="form-control" type="number" id="elecInt" placeholder="Elec Int"></div>
+          </div>
+
+          <h6 class="text-secondary">Labs (Ext ≤50, Int ≤50)</h6>
+          <div class="row g-3 mb-4">
+            <div class="col-md-4"><input class="form-control" type="number" id="chemLabInt" placeholder="Chem Lab Int"></div>
+            <div class="col-md-4"><input class="form-control" type="number" id="chemLabExt" placeholder="Chem Lab Ext"></div>
+            <div class="col-md-4"><input class="form-control" type="number" id="elecLabInt" placeholder="Elec Lab Int"></div>
+            <div class="col-md-4"><input class="form-control" type="number" id="elecLabExt" placeholder="Elec Lab Ext"></div>
+            <div class="col-md-4"><input class="form-control" type="number" id="progLabInt" placeholder="Prog Lab Int"></div>
+            <div class="col-md-4"><input class="form-control" type="number" id="progLabExt" placeholder="Prog Lab Ext"></div>
+            <div class="col-md-4"><input class="form-control" type="number" id="graphicsInt" placeholder="Graphics Int"></div>
+            <div class="col-md-4"><input class="form-control" type="number" id="graphicsExt" placeholder="Graphics Ext"></div>
+          </div>
+
+          <button type="button" onclick="calculate()" class="btn-calc">Calculate Result</button>
+        </form>
+
+        <div id="results" class="result"></div>
+        <div class="footer">RKGIT BTECH RESULT</div>
+
+      </div>
     </div>
+  </div>
 
-    <h5>Labs (Int & Ext Max: 50)</h5>
-    <div class="row g-2 mb-3">
-      <div class="col-md-4"><label>Chem Lab Int</label><input type="number" id="chemLabInt" class="form-control"></div>
-      <div class="col-md-4"><label>Chem Lab Ext</label><input type="number" id="chemLabExt" class="form-control"></div>
-      <div class="col-md-4"><label>Elec Lab Int</label><input type="number" id="elecLabInt" class="form-control"></div>
-      <div class="col-md-4"><label>Elec Lab Ext</label><input type="number" id="elecLabExt" class="form-control"></div>
-      <div class="col-md-4"><label>Prog Lab Int</label><input type="number" id="progLabInt" class="form-control"></div>
-      <div class="col-md-4"><label>Prog Lab Ext</label><input type="number" id="progLabExt" class="form-control"></div>
-      <div class="col-md-4"><label>Graphics Int</label><input type="number" id="graphicsInt" class="form-control"></div>
-      <div class="col-md-4"><label>Graphics Ext</label><input type="number" id="graphicsExt" class="form-control"></div>
-    </div>
-
-    <div class="d-grid gap-2">
-      <button type="button" onclick="calculate()" class="btn btn-primary">Calculate</button>
-    </div>
-  </form>
-
-  <div id="results" class="result mt-4"></div>
-
-  <div class="footer">RKGIT BTECH RESULT</div>
-</div>
-
-<script>
-function getGradePoint(mark) {
-  if (mark >= 90) return 10;
-  if (mark >= 80) return 9;
-  if (mark >= 70) return 8;
-  if (mark >= 60) return 7;
-  if (mark >= 50) return 6;
-  if (mark >= 40) return 5;
-  return 0;
-}
-
-function calculate() {
-  const limits = {
-    chemExt: 70, chemInt: 30,
-    mathExt: 70, mathInt: 30,
-    envExt: 70, envInt: 30,
-    progExt: 70, progInt: 30,
-    elecExt: 70, elecInt: 30,
-    chemLabInt: 50, chemLabExt: 50,
-    elecLabInt: 50, elecLabExt: 50,
-    progLabInt: 50, progLabExt: 50,
-    graphicsInt: 50, graphicsExt: 50
-  };
-
-  const results = document.getElementById("results");
-  for (let id in limits) {
-    const val = +document.getElementById(id).value;
-    if (val > limits[id]) {
-      results.innerHTML = `
-        <div class="alert alert-danger text-center">
-          ABHI BACCHE KI JAAN LEGA KYA 😭<br>
-          CHAL BETE AUKAT ME RE KE NUMBER INPUT KAR<br>
-          (ITNA KABHI JIVAN MAI BHI NUMBER DEKHA HAI?<br>
-          TERA GHAR CHALA JAYEGA IS MAI)
-        </div>
-      `;
-      return;
+  <script>
+    function getGradePoint(mark) {
+      if (mark >= 90) return 10;
+      if (mark >= 80) return 9;
+      if (mark >= 70) return 8;
+      if (mark >= 60) return 7;
+      if (mark >= 50) return 6;
+      if (mark >= 40) return 5;
+      return 0;
     }
-  }
 
-  const theory = [
-    {marks: +chemExt.value + +chemInt.value, credit: 4},
-    {marks: +mathExt.value + +mathInt.value, credit: 4},
-    {marks: +envExt.value + +envInt.value, credit: 3},
-    {marks: +progExt.value + +progInt.value, credit: 3},
-    {marks: +elecExt.value + +elecInt.value, credit: 3},
-  ];
-  const labs = [
-    {marks: +chemLabInt.value + +chemLabExt.value, credit: 1},
-    {marks: +elecLabInt.value + +elecLabExt.value, credit: 1},
-    {marks: +progLabInt.value + +progLabExt.value, credit: 1},
-    {marks: +graphicsInt.value + +graphicsExt.value, credit: 2},
-  ];
+    function calculate() {
+      const limits = {
+        chemExt: 70, chemInt: 30,
+        mathExt: 70, mathInt: 30,
+        envExt: 70, envInt: 30,
+        progExt: 70, progInt: 30,
+        elecExt: 70, elecInt: 30,
+        chemLabInt: 50, chemLabExt: 50,
+        elecLabInt: 50, elecLabExt: 50,
+        progLabInt: 50, progLabExt: 50,
+        graphicsInt: 50, graphicsExt: 50
+      };
 
-  const all = theory.concat(labs);
-  let totalMarks = 0, totalCredits = 0, weighted = 0;
-  all.forEach(s => {
-    const gp = getGradePoint(s.marks);
-    totalMarks += s.marks;
-    totalCredits += s.credit;
-    weighted += gp * s.credit;
-  });
+      const results = document.getElementById("results");
+      for (let id in limits) {
+        const val = Number(document.getElementById(id).value);
+        if (val > limits[id]) {
+          results.innerHTML = `<div class="alert alert-danger text-center">
+            ABHI BACCHE KI JAAN LEGA KYA 😭<br>
+            CHAL BETE AUKAT ME RE KE NUMBER INPUT KAR<br>
+            (ITNA KABHI JIVAN MAI BHI NUMBER DEKHA HAI?<br>
+            TERA GHAR CHALA JAYEGA IS MAI)
+          </div>`;
+          return;
+        }
+      }
 
-  const sgpa = (weighted / totalCredits).toFixed(2);
-  const percent = (totalMarks / 900 * 100).toFixed(2);
+      const theory = [
+        {marks: +chemExt.value + +chemInt.value, credit: 4},
+        {marks: +mathExt.value + +mathInt.value, credit: 4},
+        {marks: +envExt.value + +envInt.value, credit: 3},
+        {marks: +progExt.value + +progInt.value, credit: 3},
+        {marks: +elecExt.value + +elecInt.value, credit: 3},
+      ];
+      const labs = [
+        {marks: +chemLabInt.value + +chemLabExt.value, credit: 1},
+        {marks: +elecLabInt.value + +elecLabExt.value, credit: 1},
+        {marks: +progLabInt.value + +progLabExt.value, credit: 1},
+        {marks: +graphicsInt.value + +graphicsExt.value, credit: 2},
+      ];
 
-  results.innerHTML = `
-    <div class="alert alert-success">
-      <strong>Total Marks:</strong> ${totalMarks} / 900<br>
-      <strong>Percentage:</strong> ${percent}%<br>
-      <strong>SGPA:</strong> ${sgpa}<br>
-      <strong>Credits Earned:</strong> ${totalCredits}
-    </div>
-  `;
-}
-</script>
+      const all = theory.concat(labs);
+      let totalMarks = 0, totalCredits = 0, weighted = 0;
+      all.forEach(s => {
+        weighted += getGradePoint(s.marks) * s.credit;
+        totalMarks += s.marks;
+        totalCredits += s.credit;
+      });
 
+      const sgpa = (weighted / totalCredits).toFixed(2);
+      const percent = (totalMarks / 900 * 100).toFixed(2);
+
+      results.innerHTML = `<div class="alert alert-success text-center">
+        <strong>Total: ${totalMarks} / 900</strong><br>
+        Percentage: <strong>${percent}%</strong> &nbsp; • &nbsp; SGPA: <strong>${sgpa}</strong><br>
+        Credits: <strong>${totalCredits}</strong>
+      </div>`;
+    }
+  </script>
 </body>
 </html>
