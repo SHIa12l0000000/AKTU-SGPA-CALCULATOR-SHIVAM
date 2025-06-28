@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AKTU SGPA Calculator</title>
+  <style>
+    body {font-family: Arial, sans-serif; margin: 20px; background: #f5f5f5;}
+    .container {max-width: 700px; margin: auto; background: #fff; padding: 20px; border-radius: 8px;}
+    input[type=number] {width: 60px;}
+    table {width: 100%; border-collapse: collapse; margin-bottom: 20px;}
+    th, td {padding: 8px; text-align: left;}
+    th {background: #eee;}
+    button {padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 5px;}
+    button:hover {background: #0056b3;}
+    .result {margin-top: 20px; font-weight: bold;}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>AKTU SGPA Calculator</h1>
+    <form id="marksForm">
+      <h3>Theory (70 ext + 30 int)</h3>
+      <table>
+        <tr><th>Subject</th><th>Ext</th><th>Int</th></tr>
+        <tr><td>Chemistry</td><td><input type="number" id="chemExt"></td><td><input type="number" id="chemInt"></td></tr>
+        <tr><td>Mathematics</td><td><input type="number" id="mathExt"></td><td><input type="number" id="mathInt"></td></tr>
+        <tr><td>Environment</td><td><input type="number" id="envExt"></td><td><input type="number" id="envInt"></td></tr>
+        <tr><td>Programming</td><td><input type="number" id="progExt"></td><td><input type="number" id="progInt"></td></tr>
+        <tr><td>Electrical</td><td><input type="number" id="elecExt"></td><td><input type="number" id="elecInt"></td></tr>
+      </table>
+      <h3>Lab (50 int + 50 ext)</h3>
+      <table>
+        <tr><th>Lab</th><th>Int</th><th>Ext</th></tr>
+        <tr><td>Chemistry Lab</td><td><input type="number" id="chemLabInt"></td><td><input type="number" id="chemLabExt"></td></tr>
+        <tr><td>Electrical Lab</td><td><input type="number" id="elecLabInt"></td><td><input type="number" id="elecLabExt"></td></tr>
+        <tr><td>Programming Lab</td><td><input type="number" id="progLabInt"></td><td><input type="number" id="progLabExt"></td></tr>
+        <tr><td>Graphics Lab</td><td colspan="2"><input type="number" id="graphics"></td></tr>
+      </table>
+      <button type="button" onclick="calculate()">Calculate</button>
+    </form>
+    <div id="results" class="result"></div>
+  </div>
+<script>
+function getGradePoint(mark) {
+  if (mark >= 90) return 10;
+  if (mark >= 80) return 9;
+  if (mark >= 70) return 8;
+  if (mark >= 60) return 7;
+  if (mark >= 50) return 6;
+  if (mark >= 40) return 5;
+  return 0;
+}
+function calculate() {
+  const theory = [
+    {marks: +chemExt.value + +chemInt.value, credit:4},
+    {marks: +mathExt.value + +mathInt.value, credit:4},
+    {marks: +envExt.value + +envInt.value, credit:3},
+    {marks: +progExt.value + +progInt.value, credit:3},
+    {marks: +elecExt.value + +elecInt.value, credit:3},
+  ];
+  const labs = [
+    {marks: +chemLabInt.value + +chemLabExt.value, credit:1},
+    {marks: +elecLabInt.value + +elecLabExt.value, credit:1},
+    {marks: +progLabInt.value + +progLabExt.value, credit:1},
+    {marks: +graphics.value, credit:2},
+  ];
+  const all = theory.concat(labs);
+  let totalMarks =0, totalCredits=0, weighted=0;
+  all.forEach(s => {
+    const gp=getGradePoint(s.marks);
+    totalMarks+=s.marks;
+    totalCredits+=s.credit;
+    weighted+=gp*s.credit;
+  });
+  const sgpa=(weighted/totalCredits).toFixed(2);
+  const percent=(totalMarks/900*100).toFixed(2);
+  results.innerHTML = `
+    Total Marks: <b>${totalMarks}/900</b><br>
+    Percentage: <b>${percent}%</b><br>
+    SGPA: <b>${sgpa}</b><br>
+    Credits Earned: <b>${totalCredits}</b>`;
+}
+</script>
+</body>
+</html>
