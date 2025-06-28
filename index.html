@@ -112,42 +112,23 @@
     }
 
     function calculate() {
-      const maxLimits = {
-        ext: 70,
-        int: 30,
-        lab: 50
+      const limits = {
+        chemExt: 70, chemInt: 30,
+        mathExt: 70, mathInt: 30,
+        envExt: 70, envInt: 30,
+        progExt: 70, progInt: 30,
+        elecExt: 70, elecInt: 30,
+        chemLabInt: 50, chemLabExt: 50,
+        elecLabInt: 50, elecLabExt: 50,
+        progLabInt: 50, progLabExt: 50,
+        graphicsInt: 50, graphicsExt: 50
       };
 
-      const inputs = {
-        chemExt: +document.getElementById("chemExt").value,
-        chemInt: +document.getElementById("chemInt").value,
-        mathExt: +document.getElementById("mathExt").value,
-        mathInt: +document.getElementById("mathInt").value,
-        envExt: +document.getElementById("envExt").value,
-        envInt: +document.getElementById("envInt").value,
-        progExt: +document.getElementById("progExt").value,
-        progInt: +document.getElementById("progInt").value,
-        elecExt: +document.getElementById("elecExt").value,
-        elecInt: +document.getElementById("elecInt").value,
-        chemLabInt: +document.getElementById("chemLabInt").value,
-        chemLabExt: +document.getElementById("chemLabExt").value,
-        elecLabInt: +document.getElementById("elecLabInt").value,
-        elecLabExt: +document.getElementById("elecLabExt").value,
-        progLabInt: +document.getElementById("progLabInt").value,
-        progLabExt: +document.getElementById("progLabExt").value,
-        graphicsInt: +document.getElementById("graphicsInt").value,
-        graphicsExt: +document.getElementById("graphicsExt").value
-      };
-
-      // Check limits
-      for (const key in inputs) {
-        const val = inputs[key];
-        if (
-          (key.includes("Ext") && val > maxLimits.ext) ||
-          (key.includes("Int") && key.includes("Lab") === false && val > maxLimits.int) ||
-          (key.includes("Lab") && val > maxLimits.lab)
-        ) {
-          results.innerHTML = `
+      const ids = Object.keys(limits);
+      for (const id of ids) {
+        const value = +document.getElementById(id).value;
+        if (value > limits[id]) {
+          document.getElementById("results").innerHTML = `
             <div style="color:red; font-size: 16px; line-height: 1.6;">
               ABHI BACCHE KI JAAN LEGA KYA 😭<br>
               CHAL BETE AUKAT ME RE KE NUMBER INPUT KAR<br>
@@ -159,20 +140,19 @@
         }
       }
 
-      // Now calculate SGPA and percentage
       const theory = [
-        {marks: inputs.chemExt + inputs.chemInt, credit: 4},
-        {marks: inputs.mathExt + inputs.mathInt, credit: 4},
-        {marks: inputs.envExt + inputs.envInt, credit: 3},
-        {marks: inputs.progExt + inputs.progInt, credit: 3},
-        {marks: inputs.elecExt + inputs.elecInt, credit: 3}
+        {marks: +chemExt.value + +chemInt.value, credit: 4},
+        {marks: +mathExt.value + +mathInt.value, credit: 4},
+        {marks: +envExt.value + +envInt.value, credit: 3},
+        {marks: +progExt.value + +progInt.value, credit: 3},
+        {marks: +elecExt.value + +elecInt.value, credit: 3}
       ];
 
       const labs = [
-        {marks: inputs.chemLabInt + inputs.chemLabExt, credit: 1},
-        {marks: inputs.elecLabInt + inputs.elecLabExt, credit: 1},
-        {marks: inputs.progLabInt + inputs.progLabExt, credit: 1},
-        {marks: inputs.graphicsInt + inputs.graphicsExt, credit: 2}
+        {marks: +chemLabInt.value + +chemLabExt.value, credit: 1},
+        {marks: +elecLabInt.value + +elecLabExt.value, credit: 1},
+        {marks: +progLabInt.value + +progLabExt.value, credit: 1},
+        {marks: +graphicsInt.value + +graphicsExt.value, credit: 2}
       ];
 
       const all = theory.concat(labs);
@@ -188,7 +168,7 @@
       const sgpa = (weighted / totalCredits).toFixed(2);
       const percent = (totalMarks / 900 * 100).toFixed(2);
 
-      results.innerHTML = `
+      document.getElementById("results").innerHTML = `
         Total Marks: <b>${totalMarks} / 900</b><br>
         Percentage: <b>${percent}%</b><br>
         SGPA: <b>${sgpa}</b><br>
