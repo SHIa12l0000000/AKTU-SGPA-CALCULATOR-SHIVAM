@@ -19,7 +19,7 @@
       border-radius: 8px;
     }
     input[type=number] {
-      width: 70px;
+      width: 80px;
     }
     table {
       width: 100%;
@@ -77,20 +77,20 @@
       <h3>Theory (70 ext + 30 int)</h3>
       <table>
         <tr><th>Subject</th><th>Ext</th><th>Int</th></tr>
-        <tr><td>Chemistry</td><td><input type="number" id="chemExt"></td><td><input type="number" id="chemInt"></td></tr>
-        <tr><td>Mathematics</td><td><input type="number" id="mathExt"></td><td><input type="number" id="mathInt"></td></tr>
-        <tr><td>Environment</td><td><input type="number" id="envExt"></td><td><input type="number" id="envInt"></td></tr>
-        <tr><td>Programming</td><td><input type="number" id="progExt"></td><td><input type="number" id="progInt"></td></tr>
-        <tr><td>Electrical</td><td><input type="number" id="elecExt"></td><td><input type="number" id="elecInt"></td></tr>
+        <tr><td>Chemistry</td><td><input type="number" id="chemExt" min="0" max="100000000"></td><td><input type="number" id="chemInt" min="0" max="100000000"></td></tr>
+        <tr><td>Mathematics</td><td><input type="number" id="mathExt" min="0" max="100000000"></td><td><input type="number" id="mathInt" min="0" max="100000000"></td></tr>
+        <tr><td>Environment</td><td><input type="number" id="envExt" min="0" max="100000000"></td><td><input type="number" id="envInt" min="0" max="100000000"></td></tr>
+        <tr><td>Programming</td><td><input type="number" id="progExt" min="0" max="100000000"></td><td><input type="number" id="progInt" min="0" max="100000000"></td></tr>
+        <tr><td>Electrical</td><td><input type="number" id="elecExt" min="0" max="100000000"></td><td><input type="number" id="elecInt" min="0" max="100000000"></td></tr>
       </table>
 
       <h3>Lab (50 int + 50 ext)</h3>
       <table>
         <tr><th>Lab</th><th>Int</th><th>Ext</th></tr>
-        <tr><td>Chemistry Lab</td><td><input type="number" id="chemLabInt"></td><td><input type="number" id="chemLabExt"></td></tr>
-        <tr><td>Electrical Lab</td><td><input type="number" id="elecLabInt"></td><td><input type="number" id="elecLabExt"></td></tr>
-        <tr><td>Programming Lab</td><td><input type="number" id="progLabInt"></td><td><input type="number" id="progLabExt"></td></tr>
-        <tr><td>Graphics Lab</td><td><input type="number" id="graphicsInt"></td><td><input type="number" id="graphicsExt"></td></tr>
+        <tr><td>Chemistry Lab</td><td><input type="number" id="chemLabInt" min="0" max="100000000"></td><td><input type="number" id="chemLabExt" min="0" max="100000000"></td></tr>
+        <tr><td>Electrical Lab</td><td><input type="number" id="elecLabInt" min="0" max="100000000"></td><td><input type="number" id="elecLabExt" min="0" max="100000000"></td></tr>
+        <tr><td>Programming Lab</td><td><input type="number" id="progLabInt" min="0" max="100000000"></td><td><input type="number" id="progLabExt" min="0" max="100000000"></td></tr>
+        <tr><td>Graphics Lab</td><td><input type="number" id="graphicsInt" min="0" max="100000000"></td><td><input type="number" id="graphicsExt" min="0" max="100000000"></td></tr>
       </table>
 
       <button type="button" onclick="calculate()">Calculate</button>
