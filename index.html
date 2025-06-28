@@ -1,3 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AKTU SGPA Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background: #f5f5f5;
+      position: relative;
+    }
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    input[type=number] {
+      width: 70px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    th, td {
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background: #eee;
+    }
+    button {
+      padding: 10px 20px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    .result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    .top-left {
+      position: absolute;
+      top: 5px;
+      left: 10px;
+      font-size: 12px;
+      color: gray;
+    }
+    .title {
+      text-align: center;
+      font-weight: bold;
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+    .footer {
+      text-align: center;
+      font-size: 14px;
+      margin-top: 30px;
+      color: gray;
+    }
+  </style>
+</head>
+<body>
+  <div class="top-left">created by ai + shivam (it)</div>
+  <div class="container">
+    <div class="title">1st Year BTech Result Calculator</div>
+    <form id="marksForm">
+      <h3>Theory (70 ext + 30 int)</h3>
+      <table>
+        <tr><th>Subject</th><th>Ext</th><th>Int</th></tr>
+        <tr><td>Chemistry</td><td><input type="number" id="chemExt"></td><td><input type="number" id="chemInt"></td></tr>
+        <tr><td>Mathematics</td><td><input type="number" id="mathExt"></td><td><input type="number" id="mathInt"></td></tr>
+        <tr><td>Environment</td><td><input type="number" id="envExt"></td><td><input type="number" id="envInt"></td></tr>
+        <tr><td>Programming</td><td><input type="number" id="progExt"></td><td><input type="number" id="progInt"></td></tr>
+        <tr><td>Electrical</td><td><input type="number" id="elecExt"></td><td><input type="number" id="elecInt"></td></tr>
+      </table>
+
+      <h3>Lab (50 int + 50 ext)</h3>
+      <table>
+        <tr><th>Lab</th><th>Int</th><th>Ext</th></tr>
+        <tr><td>Chemistry Lab</td><td><input type="number" id="chemLabInt"></td><td><input type="number" id="chemLabExt"></td></tr>
+        <tr><td>Electrical Lab</td><td><input type="number" id="elecLabInt"></td><td><input type="number" id="elecLabExt"></td></tr>
+        <tr><td>Programming Lab</td><td><input type="number" id="progLabInt"></td><td><input type="number" id="progLabExt"></td></tr>
+        <tr><td>Graphics Lab</td><td><input type="number" id="graphicsInt"></td><td><input type="number" id="graphicsExt"></td></tr>
+      </table>
+
+      <button type="button" onclick="calculate()">Calculate</button>
+    </form>
+
+    <div id="results" class="result"></div>
+    <div class="footer">RKGIT BTECH RESULT</div>
+  </div>
+
 <script>
 function getGradePoint(mark) {
   if (mark >= 90) return 10;
@@ -7,11 +109,6 @@ function getGradePoint(mark) {
   if (mark >= 50) return 6;
   if (mark >= 40) return 5;
   return 0;
-}
-
-function limit(input, max) {
-  if (parseInt(input.value) > max) input.value = max;
-  if (parseInt(input.value) < 0) input.value = 0;
 }
 
 function calculate() {
@@ -40,12 +137,12 @@ function calculate() {
 
   if (totalMarks > 900) {
     results.innerHTML = `
-      <span style="color: red; font-size: 16px; line-height: 1.6;">
-      ABHI BACCHE KI JAAN LEGA KYA 😭<br>
-      CHAL BETE AUKAT ME RE KE NUMBER INPUT KAR<br>
-      (ITNA KABHI JIVAN MAI BHI NUMBER DEKHA HAI?<br>
-      TERA GHAR CHALA JAYEGA IS MAI)
-      </span>
+      <div style="color:red;font-size:16px;line-height:1.6;">
+        ABHI BACCHE KI JAAN LEGA KYA 😭<br>
+        CHAL BETE AUKAT ME RE KE NUMBER INPUT KAR<br>
+        (ITNA KABHI JIVAN MAI BHI NUMBER DEKHA HAI?<br>
+        TERA GHAR CHALA JAYEGA IS MAI)
+      </div>
     `;
     return;
   }
@@ -61,3 +158,5 @@ function calculate() {
   `;
 }
 </script>
+</body>
+</html>
