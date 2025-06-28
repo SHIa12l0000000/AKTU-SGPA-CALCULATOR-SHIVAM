@@ -100,64 +100,64 @@
     <div class="footer">RKGIT BTECH RESULT</div>
   </div>
 
-<script>
-function getGradePoint(mark) {
-  if (mark >= 90) return 10;
-  if (mark >= 80) return 9;
-  if (mark >= 70) return 8;
-  if (mark >= 60) return 7;
-  if (mark >= 50) return 6;
-  if (mark >= 40) return 5;
-  return 0;
-}
+  <script>
+    function getGradePoint(mark) {
+      if (mark >= 90) return 10;
+      if (mark >= 80) return 9;
+      if (mark >= 70) return 8;
+      if (mark >= 60) return 7;
+      if (mark >= 50) return 6;
+      if (mark >= 40) return 5;
+      return 0;
+    }
 
-function calculate() {
-  const theory = [
-    {marks: +chemExt.value + +chemInt.value, credit: 4},
-    {marks: +mathExt.value + +mathInt.value, credit: 4},
-    {marks: +envExt.value + +envInt.value, credit: 3},
-    {marks: +progExt.value + +progInt.value, credit: 3},
-    {marks: +elecExt.value + +elecInt.value, credit: 3},
-  ];
-  const labs = [
-    {marks: +chemLabInt.value + +chemLabExt.value, credit: 1},
-    {marks: +elecLabInt.value + +elecLabExt.value, credit: 1},
-    {marks: +progLabInt.value + +progLabExt.value, credit: 1},
-    {marks: +graphicsInt.value + +graphicsExt.value, credit: 2},
-  ];
+    function calculate() {
+      const theory = [
+        {marks: +chemExt.value + +chemInt.value, credit: 4},
+        {marks: +mathExt.value + +mathInt.value, credit: 4},
+        {marks: +envExt.value + +envInt.value, credit: 3},
+        {marks: +progExt.value + +progInt.value, credit: 3},
+        {marks: +elecExt.value + +elecInt.value, credit: 3},
+      ];
+      const labs = [
+        {marks: +chemLabInt.value + +chemLabExt.value, credit: 1},
+        {marks: +elecLabInt.value + +elecLabExt.value, credit: 1},
+        {marks: +progLabInt.value + +progLabExt.value, credit: 1},
+        {marks: +graphicsInt.value + +graphicsExt.value, credit: 2},
+      ];
 
-  const all = theory.concat(labs);
-  let totalMarks = 0, totalCredits = 0, weighted = 0;
+      const all = theory.concat(labs);
+      let totalMarks = 0, totalCredits = 0, weighted = 0;
 
-  all.forEach(s => {
-    const gp = getGradePoint(s.marks);
-    totalMarks += s.marks;
-    totalCredits += s.credit;
-    weighted += gp * s.credit;
-  });
+      all.forEach(s => {
+        const gp = getGradePoint(s.marks);
+        totalMarks += s.marks;
+        totalCredits += s.credit;
+        weighted += gp * s.credit;
+      });
 
-  if (totalMarks > 900) {
-    results.innerHTML = `
-      <div style="color:red; font-size: 16px; line-height: 1.6;">
-        ABHI BACCHE KI JAAN LEGA KYA 😭<br>
-        CHAL BETE AUKAT ME RE KE NUMBER INPUT KAR<br>
-        (ITNA KABHI JIVAN MAI BHI NUMBER DEKHA HAI?<br>
-        TERA GHAR CHALA JAYEGA IS MAI)
-      </div>
-    `;
-    return;
-  }
+      if (totalMarks > 900) {
+        results.innerHTML = `
+          <div style="color:red; font-size: 16px; line-height: 1.6;">
+            ABHI BACCHE KI JAAN LEGA KYA 😭<br>
+            CHAL BETE AUKAT ME RE KE NUMBER INPUT KAR<br>
+            (ITNA KABHI JIVAN MAI BHI NUMBER DEKHA HAI?<br>
+            TERA GHAR CHALA JAYEGA IS MAI)
+          </div>
+        `;
+        return;
+      }
 
-  const sgpa = (weighted / totalCredits).toFixed(2);
-  const percent = (totalMarks / 900 * 100).toFixed(2);
+      const sgpa = (weighted / totalCredits).toFixed(2);
+      const percent = (totalMarks / 900 * 100).toFixed(2);
 
-  results.innerHTML = `
-    Total Marks: <b>${totalMarks} / 900</b><br>
-    Percentage: <b>${percent}%</b><br>
-    SGPA: <b>${sgpa}</b><br>
-    Credits Earned: <b>${totalCredits}</b>
-  `;
-}
-</script>
+      results.innerHTML = `
+        Total Marks: <b>${totalMarks} / 900</b><br>
+        Percentage: <b>${percent}%</b><br>
+        SGPA: <b>${sgpa}</b><br>
+        Credits Earned: <b>${totalCredits}</b>
+      `;
+    }
+  </script>
 </body>
 </html>
