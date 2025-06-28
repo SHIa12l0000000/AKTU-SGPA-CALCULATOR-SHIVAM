@@ -101,6 +101,7 @@
   </div>
 
 <script>
+<script>
 function getGradePoint(mark) {
   if (mark >= 90) return 10;
   if (mark >= 80) return 9;
@@ -128,6 +129,7 @@ function calculate() {
 
   const all = theory.concat(labs);
   let totalMarks = 0, totalCredits = 0, weighted = 0;
+
   all.forEach(s => {
     const gp = getGradePoint(s.marks);
     totalMarks += s.marks;
@@ -137,7 +139,7 @@ function calculate() {
 
   if (totalMarks > 900) {
     results.innerHTML = `
-      <div style="color:red;font-size:16px;line-height:1.6;">
+      <div style="color:red; font-size: 16px; line-height: 1.6;">
         ABHI BACCHE KI JAAN LEGA KYA 😭<br>
         CHAL BETE AUKAT ME RE KE NUMBER INPUT KAR<br>
         (ITNA KABHI JIVAN MAI BHI NUMBER DEKHA HAI?<br>
@@ -157,6 +159,8 @@ function calculate() {
     Credits Earned: <b>${totalCredits}</b>
   `;
 }
+</script>
+
 </script>
 </body>
 </html>
