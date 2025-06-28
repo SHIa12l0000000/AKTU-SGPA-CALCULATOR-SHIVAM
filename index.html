@@ -71,32 +71,30 @@
 </head>
 <body>
   <div class="top-left">created by ai + shivam (it)</div>
-
   <div class="container">
     <div class="title">1st Year BTech Result Calculator</div>
     <form id="marksForm">
       <h3>Theory (70 ext + 30 int)</h3>
       <table>
         <tr><th>Subject</th><th>Ext</th><th>Int</th></tr>
-        <tr><td>Chemistry</td><td><input type="number" id="chemExt" max="70" min="0"></td><td><input type="number" id="chemInt" max="30" min="0"></td></tr>
-        <tr><td>Mathematics</td><td><input type="number" id="mathExt" max="70" min="0"></td><td><input type="number" id="mathInt" max="30" min="0"></td></tr>
-        <tr><td>Environment</td><td><input type="number" id="envExt" max="70" min="0"></td><td><input type="number" id="envInt" max="30" min="0"></td></tr>
-        <tr><td>Programming</td><td><input type="number" id="progExt" max="70" min="0"></td><td><input type="number" id="progInt" max="30" min="0"></td></tr>
-        <tr><td>Electrical</td><td><input type="number" id="elecExt" max="70" min="0"></td><td><input type="number" id="elecInt" max="30" min="0"></td></tr>
+        <tr><td>Chemistry</td><td><input type="number" id="chemExt" max="70" min="0" oninput="limit(this,70)"></td><td><input type="number" id="chemInt" max="30" min="0" oninput="limit(this,30)"></td></tr>
+        <tr><td>Mathematics</td><td><input type="number" id="mathExt" max="70" min="0" oninput="limit(this,70)"></td><td><input type="number" id="mathInt" max="30" min="0" oninput="limit(this,30)"></td></tr>
+        <tr><td>Environment</td><td><input type="number" id="envExt" max="70" min="0" oninput="limit(this,70)"></td><td><input type="number" id="envInt" max="30" min="0" oninput="limit(this,30)"></td></tr>
+        <tr><td>Programming</td><td><input type="number" id="progExt" max="70" min="0" oninput="limit(this,70)"></td><td><input type="number" id="progInt" max="30" min="0" oninput="limit(this,30)"></td></tr>
+        <tr><td>Electrical</td><td><input type="number" id="elecExt" max="70" min="0" oninput="limit(this,70)"></td><td><input type="number" id="elecInt" max="30" min="0" oninput="limit(this,30)"></td></tr>
       </table>
 
       <h3>Lab (50 int + 50 ext)</h3>
       <table>
         <tr><th>Lab</th><th>Int</th><th>Ext</th></tr>
-        <tr><td>Chemistry Lab</td><td><input type="number" id="chemLabInt" max="50" min="0"></td><td><input type="number" id="chemLabExt" max="50" min="0"></td></tr>
-        <tr><td>Electrical Lab</td><td><input type="number" id="elecLabInt" max="50" min="0"></td><td><input type="number" id="elecLabExt" max="50" min="0"></td></tr>
-        <tr><td>Programming Lab</td><td><input type="number" id="progLabInt" max="50" min="0"></td><td><input type="number" id="progLabExt" max="50" min="0"></td></tr>
-        <tr><td>Graphics Lab</td><td><input type="number" id="graphicsInt" max="50" min="0"></td><td><input type="number" id="graphicsExt" max="50" min="0"></td></tr>
+        <tr><td>Chemistry Lab</td><td><input type="number" id="chemLabInt" max="50" min="0" oninput="limit(this,50)"></td><td><input type="number" id="chemLabExt" max="50" min="0" oninput="limit(this,50)"></td></tr>
+        <tr><td>Electrical Lab</td><td><input type="number" id="elecLabInt" max="50" min="0" oninput="limit(this,50)"></td><td><input type="number" id="elecLabExt" max="50" min="0" oninput="limit(this,50)"></td></tr>
+        <tr><td>Programming Lab</td><td><input type="number" id="progLabInt" max="50" min="0" oninput="limit(this,50)"></td><td><input type="number" id="progLabExt" max="50" min="0" oninput="limit(this,50)"></td></tr>
+        <tr><td>Graphics Lab</td><td><input type="number" id="graphicsInt" max="50" min="0" oninput="limit(this,50)"></td><td><input type="number" id="graphicsExt" max="50" min="0" oninput="limit(this,50)"></td></tr>
       </table>
 
       <button type="button" onclick="calculate()">Calculate</button>
     </form>
-
     <div id="results" class="result"></div>
     <div class="footer">RKGIT BTECH RESULT</div>
   </div>
@@ -110,6 +108,11 @@ function getGradePoint(mark) {
   if (mark >= 50) return 6;
   if (mark >= 40) return 5;
   return 0;
+}
+
+function limit(input, max) {
+  if (parseInt(input.value) > max) input.value = max;
+  if (parseInt(input.value) < 0) input.value = 0;
 }
 
 function calculate() {
